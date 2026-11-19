@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- Style inspired by Vercel's neutral interface principles, not affiliated. Original app layout. -->
+<html lang="en" data-zcode-design>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Analyze an authorized public YouTube video, choose an available quality, and save it to your computer.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fafafa">
+  <title>YouTube video downloader</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23171717'/%3E%3Cpath d='M16 7v13m-5-5 5 5 5-5M8 24h16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="container topnav-inner">
+      <span class="wordmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4" stroke-linecap="round" stroke-linejoin="round"/></svg>Video downloader</span>
+      <span class="local-label">Runs on your computer</span>
+    </div>
+  </header>
+  <main id="content" class="container">
+    <aside class="ad-slot ad-slot-banner" data-ad-slot="banner" aria-label="Banner advertisement"></aside>
+    <section class="section hero" data-od-id="downloader" aria-labelledby="page-title">
+      <div class="intro">
+        <h1 id="page-title">YouTube link.<br><span>Your video file.</span></h1>
+        <p class="lead">Paste a link, choose a quality, and download.</p>
+      </div>
+      <form id="analyze-form" class="analyze-form">
+        <label for="video-url">YouTube video link</label>
+        <div class="input-row">
+          <input id="video-url" name="url" class="input" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://www.youtube.com/watch?v=…" maxlength="2048" required aria-describedby="link-hint field-error">
+          <button id="analyze-button" class="btn btn-primary" type="submit"><span id="analyze-label">Analyze link</span><svg id="analyze-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <p id="link-hint" class="hint">YouTube, Shorts, and youtu.be links. One video at a time.</p>
+        <p id="field-error" class="error" role="alert"></p>
+      </form>
+      <p id="activity" class="activity" role="status" aria-live="polite"></p>
+      <section id="result" class="result" data-od-id="video-result" aria-labelledby="video-title" hidden>
+        <div class="video-summary">
+          <div id="thumbnail-wrap" class="thumbnail-wrap"><img id="thumbnail" alt="" referrerpolicy="no-referrer" hidden><span id="thumbnail-fallback">Preview unavailable</span></div>
+          <div class="video-details"><p class="result-caption">VIDEO FOUND</p><h2 id="video-title" tabindex="-1" dir="auto"></h2><p id="video-meta" class="video-meta" dir="auto"></p></div>
+        </div>
+        <div class="download-controls">
+          <div class="field"><label for="quality">Video quality</label><select id="quality" class="input" aria-describedby="quality-hint"></select><p id="quality-hint" class="hint">Video and audio included.</p></div>
+          <button id="download-button" class="btn btn-dark" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="download-label">Download video</span></button>
+        </div>
+        <div id="transfer" class="transfer" hidden>
+          <div class="transfer-heading"><p id="transfer-message" role="status" aria-live="polite"></p><span id="percentage" class="num"></span></div>
+          <progress id="progress" max="100" aria-label="Preparing video download"></progress>
+          <p id="transfer-detail" class="hint"></p>
+          <a id="save-link" class="save-link" hidden>Save video again</a>
+          <button id="resume-button" class="text-button" type="button" hidden>Check download status</button>
+        </div>
+        <p id="download-error" class="error" role="alert"></p>
+        <label class="permission"><input id="authorized" type="checkbox"><span>I own this video or have permission to download it.</span></label>
+      </section>
+      <p class="notice">Only download content you are authorized to save and where YouTube permits it. Private, paid, and restricted videos aren’t supported.</p>
+      <noscript><p class="error">Enable JavaScript to analyze links and download videos.</p></noscript>
+    </section>
+    <aside class="ad-slot ad-slot-native" data-ad-slot="native" aria-label="Native advertisement"></aside>
+  </main>
+  <footer class="container pagefoot"><span>Saved through your browser to your usual download folder.</span><span>Not affiliated with YouTube.</span></footer>
+  <aside class="ad-slot ad-slot-socialbar" data-ad-slot="social-bar" aria-label="Social bar advertisement"></aside>
+  <!-- Add a provider-approved popunder tag here when ready. -->
+</body>
+</html>
